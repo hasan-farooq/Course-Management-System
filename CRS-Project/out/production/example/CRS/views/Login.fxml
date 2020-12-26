@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="308.0" style="-fx-background-color: #2e0304;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.LoginController">
+   <children>
+      <Button fx:id="button_1" layoutX="102.0" layoutY="186.0" mnemonicParsing="false" onAction="#login_button" prefHeight="45.0" prefWidth="103.0" style="-fx-background-color: #3b0101;" text="Login" textFill="#e0dcdc">
+         <font>
+            <Font name="SansSerif Regular" size="17.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#0dffcf" />
+         </effect>
+      </Button>
+      <ComboBox fx:id="comboBox_1" layoutX="89.0" layoutY="51.0" prefHeight="26.0" prefWidth="130.0" promptText="who's there" style="-fx-background-color: #3b0101;">
+         <effect>
+            <InnerShadow color="#c63c3c" />
+         </effect></ComboBox>
+      <TextField fx:id="textField_1" layoutX="68.0" layoutY="100.0" promptText="username" style="-fx-background-color: #3b0101;">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+         <effect>
+            <InnerShadow color="#bf2f2f" />
+         </effect></TextField>
+      <PasswordField fx:id="passwordField_1" layoutX="68.0" layoutY="139.0" promptText="password" style="-fx-background-color: #3b0101;">
+         <effect>
+            <InnerShadow color="#bf2f2f" />
+         </effect></PasswordField>
+   </children>
+   <effect>
+      <InnerShadow color="#bfff40" />
+   </effect>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</Pane>
