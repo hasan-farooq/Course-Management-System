@@ -26,7 +26,10 @@ Some files are missing because of broken links (while moving from Swing to JavaF
 
 ## Here are some screenshots of UI
 
-![alt text](/CRS-Project/images/student.png)
-![alt text](/CRS-Project/images/admin.png)
-![alt text](/CRS-Project/images/register.png)
 ![alt text](/CRS-Project/images/login.png)
+![alt text](/CRS-Project/images/register.png)
+![alt text](/CRS-Project/images/admin.png)
+![alt text](/CRS-Project/images/student.png)
+
+
+
