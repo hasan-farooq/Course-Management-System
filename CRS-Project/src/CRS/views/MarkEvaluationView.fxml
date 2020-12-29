@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.MarkEvaluationController">
+    <children>
+        <TableView fx:id="table" editable="true" layoutX="169.0" layoutY="86.0" prefHeight="229.0" prefWidth="265.0" style="-fx-background-color: #ed987e;">
+            <columns>
+                <TableColumn fx:id="student" prefWidth="176.0" sortable="false" text="Student" />
+                <TableColumn fx:id="marks" minWidth="0.0" onEditCommit="#on_edit" prefWidth="86.0" sortable="false" text="Marks" />
+            </columns>
+        </TableView>
+        <Button fx:id="button_1" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #2b0103;" text="Add Marks" textFill="#faf214">
+            <effect>
+                <InnerShadow color="#d9e40a" />
+            </effect>
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Separator layoutX="228.0" layoutY="66.0" prefHeight="3.0" prefWidth="145.0">
+            <effect>
+                <DropShadow color="#901919" />
+            </effect>
+        </Separator>
+        <Button fx:id="button_2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="334.0" mnemonicParsing="false" onAction="#handler" prefHeight="46.0" prefWidth="96.0" style="-fx-background-color: #2b0103;" text="Submit" textFill="#f6baf8">
+            <effect>
+                <InnerShadow color="#994de1" />
+            </effect>
+            <font>
+                <Font size="17.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button fx:id="button_3" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="334.0" mnemonicParsing="false" onAction="#handler" prefHeight="46.0" prefWidth="96.0" style="-fx-background-color: #2b0103;" text="Back" textFill="#f6baf8">
+            <effect>
+                <InnerShadow color="#994de1" />
+            </effect>
+            <font>
+                <Font size="17.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+    </children>
+</AnchorPane>

@@ -10,26 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.RegisterCourseViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.TakeAttendanceViewController">
    <children>
-      <TableView fx:id="table" layoutX="61.0" layoutY="89.0" prefHeight="229.0" prefWidth="385.0" style="-fx-background-color: #ed987e;">
-        <columns>
-          <TableColumn fx:id="section" prefWidth="83.0" sortable="false" text="Section" />
-          <TableColumn fx:id="course" prefWidth="122.0" sortable="false" text="Course" />
-            <TableColumn fx:id="teacher" prefWidth="116.0" sortable="false" text="Teacher" />
-            <TableColumn fx:id="seats" prefWidth="63.0" sortable="false" text="Seats" />
-        </columns>
+      <TableView fx:id="table" layoutX="169.0" layoutY="86.0" prefHeight="229.0" prefWidth="265.0" style="-fx-background-color: #ed987e;">
+         <columns>
+            <TableColumn fx:id="student" prefWidth="177.0" sortable="false" text="Student" />
+            <TableColumn fx:id="select" minWidth="0.0" prefWidth="60.0" sortable="false" text="Select" />
+         </columns>
       </TableView>
-      <TableView fx:id="table_2" layoutX="449.0" layoutY="89.0" prefHeight="229.0" prefWidth="81.0" style="-fx-background-color: #ed987e;">
-        <columns>
-          <TableColumn fx:id="col_add" prefWidth="36.0" sortable="false" text="Add" />
-            <TableColumn fx:id="col_drop" prefWidth="43.0" sortable="false" text="Drop" />
-        </columns>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </TableView>
-      <Button fx:id="button_1" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #2b0103;" text="Register Courses" textFill="#faf214">
+      <Button fx:id="button_1" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #2b0103;" text="Take Attendance" textFill="#faf214">
          <effect>
             <InnerShadow color="#d9e40a" />
          </effect>

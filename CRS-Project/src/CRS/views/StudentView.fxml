@@ -2,15 +2,20 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onDragDetected="#handler" prefHeight="392.0" prefWidth="642.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.StudentViewController">
+<AnchorPane onDragDetected="#handler" prefHeight="392.0" prefWidth="565.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.StudentController">
     <children>
-        <Button fx:id="button_1" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="173.0" style="-fx-background-color: #2b0103;" text="Add/Drop Course" textFill="#faf214">
+        <Button fx:id="button_1" alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="90.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="173.0" style="-fx-background-color: #2b0103;" text="Add/Drop Course" textFill="#faf214">
             <effect>
                 <InnerShadow color="#d9e40a" />
             </effect>
@@ -21,7 +26,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="button_3" layoutX="28.0" layoutY="198.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #2b0103;" text="Transcript" textFill="#74f53d">
+        <Button fx:id="button_3" layoutX="81.0" layoutY="197.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #2b0103;" text="Transcript" textFill="#74f53d">
             <effect>
                 <InnerShadow color="#14eb17" />
             </effect>
@@ -32,7 +37,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="button_2" layoutX="28.0" layoutY="143.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #2b0103;" text="Attendance" textFill="#5ef2e3">
+        <Button fx:id="button_2" layoutX="81.0" layoutY="143.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #2b0103;" text="Attendance" textFill="#5ef2e3">
             <effect>
                 <InnerShadow color="#34ebee" />
             </effect>
@@ -43,26 +48,36 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="button_4" layoutX="28.0" layoutY="251.0" mnemonicParsing="false" onAction="#handler" prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #2b0103;" text="Dummy" textFill="#f6baf8">
-            <effect>
-                <InnerShadow color="#994de1" />
-            </effect>
-            <font>
-                <Font size="17.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Button>
-        <Separator layoutX="28.0" layoutY="143.0" prefHeight="3.0" prefWidth="145.0">
+        <Separator layoutX="81.0" layoutY="142.0" prefHeight="3.0" prefWidth="145.0">
             <effect>
                 <DropShadow color="#901919" />
             </effect>
         </Separator>
-        <Separator layoutX="28.0" layoutY="197.0" prefHeight="3.0" prefWidth="145.0" />
-        <Separator layoutX="28.0" layoutY="250.0" prefHeight="3.0" prefWidth="145.0" />
+        <Separator layoutX="81.0" layoutY="196.0" prefHeight="3.0" prefWidth="145.0" />
+      <MenuBar fx:id="menubar" layoutX="448.0" prefHeight="29.0" prefWidth="194.0">
+        <menus>
+          <Menu fx:id="menu1" mnemonicParsing="false" text="Profile">
+               <items>
+              <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#handler" text="Change Password" />
+                  <MenuItem fx:id="item2" mnemonicParsing="false" onAction="#handler" text="Log Out" />
+               </items>
+          </Menu>
+          <Menu fx:id="menu2" mnemonicParsing="false" text="Home" />
+        </menus>
+         <effect>
+            <InnerShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MenuBar>
+      <ImageView fitHeight="226.0" fitWidth="272.0" layoutX="299.0" layoutY="83.0">
+         <image>
+            <Image url="@welcome.png" />
+         </image>
+      </ImageView>
     </children>
     <effect>
-        <InnerShadow />
+        <InnerShadow color="#374214" />
     </effect>
 </AnchorPane>

@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="392.0" prefWidth="642.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.AddSectionViewController">
+<AnchorPane prefHeight="392.0" prefWidth="642.0" style="-fx-background-color: #2b0103;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRS.controllers.AddEvaluationViewController">
     <children>
-        <Button fx:id="button_1" layoutX="205.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="232.0" style="-fx-background-color: #2b0103;" text="Add Section Details" textFill="#faf214">
+        <Button fx:id="button_1" layoutX="205.0" layoutY="14.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="232.0" style="-fx-background-color: #2b0103;" text="Add Evaluation Details" textFill="#faf214">
             <effect>
-                <InnerShadow color="#db23bf" />
+                <InnerShadow color="#23cedd" />
             </effect>
             <font>
                 <Font size="17.0" />
@@ -47,7 +47,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TextField fx:id="textField_1" alignment="CENTER" layoutX="225.0" layoutY="103.0" prefHeight="29.0" prefWidth="185.0" style="-fx-background-color: #8fc942;" text="Name">
+        <TextField fx:id="textField_1" alignment="CENTER" layoutX="229.0" layoutY="168.0" prefHeight="29.0" prefWidth="185.0" style="-fx-background-color: #8fc942;" text="Marks">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -55,8 +55,8 @@
                 <Font name="KacstDecorative" size="15.0" />
             </font>
         </TextField>
-        <ComboBox fx:id="comboBox_1" layoutX="243.0" layoutY="155.0" prefWidth="150.0" promptText="Course" />
-        <TextField fx:id="textField_2" alignment="CENTER" layoutX="225.0" layoutY="245.0" prefHeight="19.0" prefWidth="185.0" style="-fx-background-color: #8fc942;" text="Capacity">
+        <ComboBox fx:id="comboBox_1" layoutX="243.0" layoutY="110.0" prefWidth="150.0" promptText="Type" />
+        <TextField fx:id="textField_2" alignment="CENTER" layoutX="229.0" layoutY="222.0" prefHeight="19.0" prefWidth="185.0" style="-fx-background-color: #8fc942;" text="Weightage">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -64,7 +64,6 @@
                 <Font name="KacstDecorative" size="15.0" />
             </font>
         </TextField>
-      <ComboBox fx:id="comboBox_2" layoutX="243.0" layoutY="199.0" prefWidth="150.0" promptText="Teacher" />
     </children>
     <effect>
         <InnerShadow color="#1b1e15" />

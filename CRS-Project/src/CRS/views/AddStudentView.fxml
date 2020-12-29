@@ -37,7 +37,7 @@
                 <DropShadow color="#901919" />
             </effect>
         </Separator>
-        <Button fx:id="button_3" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="308.0" mnemonicParsing="false" onAction="#handler" prefHeight="46.0" prefWidth="96.0" style="-fx-background-color: #2b0103;" text="Cancel" textFill="#f6baf8">
+        <Button fx:id="button_3" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="308.0" mnemonicParsing="false" onAction="#handler" prefHeight="46.0" prefWidth="96.0" style="-fx-background-color: #2b0103;" text="Back" textFill="#f6baf8">
             <effect>
                 <InnerShadow color="#994de1" />
             </effect>
