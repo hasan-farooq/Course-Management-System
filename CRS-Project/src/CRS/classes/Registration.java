@@ -1,25 +1,53 @@
 
 package CRS.classes;
 
+import javafx.scene.control.Alert;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Registration {
     private String student, section, course, grade;
+    private int marks, attendance;
 
     public Registration(String std,String sec,String course){
         this.student = std;
         this.section = sec;
         this.course = course;
-        this.grade = null;
+        this.grade = "I";
+        this.marks = 0;
+        this.attendance = 0;
     }
     public Registration(Registration reg){
         this.student = reg.student;
         this.section = reg.section;
         this.course = reg.course;
         this.grade = reg.grade;
+        this.marks = reg.marks;
+        this.attendance = reg.attendance;
+    }
+    static public boolean is_open() throws FileNotFoundException {
+        File file = new File("registration.txt");
+        Scanner reader = new Scanner(file);
+        String status = reader.nextLine();
+        reader.close();
+        if (status.equals("close")){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
     public String get_grade(){
         return this.grade;
+    }
+    public int get_marks(){
+        return this.marks;
+    }
+    public int get_attendance(){
+        return this.attendance;
     }
     public String get_section(){
         return this.section;
@@ -39,9 +67,12 @@ public class Registration {
     public boolean insert_in_db(){
         Conn con = new Conn();
         String query = "insert into registration values('"+this.student+"','"+course+"',"
-                + "'"+section+"','"+grade+"','"+0+"')";
+                + "'"+section+"','"+grade+"','"+0+"','"+0+"')";
+        String query_2 = "update section set seats = seats - 1 where "
+                + "course like '"+course+"' and name like '"+section+"'";
         try{
             con.s.executeUpdate(query);   //executes the query
+            con.s.executeUpdate(query_2);
             return true;
         } catch (Exception excp) {
             System.out.println("Error Occurred while Adding Registration");
@@ -52,8 +83,11 @@ public class Registration {
         Conn con = new Conn();
         String query = "delete from registration where student like '"+this.student+"' and course like '"+course+"' " +
                 "and section like '"+section+"'";
+        String query_2 = "update section set seats = seats + 1 where "
+                + "course like '"+course+"' and name like '"+section+"'";
         try{
             con.s.executeUpdate(query);   //executes the query
+            con.s.executeUpdate(query_2);
             return true;
         } catch (Exception excp) {
             System.out.println("Error Occurred while Registration");

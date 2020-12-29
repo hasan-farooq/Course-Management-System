@@ -1,7 +1,10 @@
 
 package CRS.classes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Student {
     private ArrayList<Registration> registrations;
@@ -14,8 +17,8 @@ public class Student {
         this.phone = ph;
         this.registrations = new ArrayList<Registration>();
     }
-    public void register_course(String course, String section){
-        this.registrations.add(new Registration(this.name,section,course));
+    public void register_course(String course, String section) throws FileNotFoundException {
+        this.registrations.add(new Registration(this.name, section, course));
     }
     public void drop_course(String course, String sec){
         for(int i = 0; i < registrations.size(); i++){
@@ -51,5 +54,5 @@ public class Student {
             return false;
         }
     }
-    
+
 }
