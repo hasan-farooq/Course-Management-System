@@ -18,10 +18,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddTeacherViewController extends Application implements Initializable {
+
+public class AddTeacherViewController implements Initializable{
 
     @FXML Stage stage_1;
     @FXML Button button_1;
@@ -33,21 +35,19 @@ public class AddTeacherViewController extends Application implements Initializab
     @FXML TextField textField_3;
     @FXML ComboBox comboBox_1;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        stage_1 = new Stage();
-        stage_1 = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/CRS/views/AddTeacherView.fxml"));
-        stage_1.setTitle("Admin View");
-        scene_1 = new Scene(root, 642, 392);
-        stage_1.setScene(scene_1);
-        stage_1.show();
+    public void go_back(){
+        Scene scene = button_2.getScene();
+        Stage stage = (Stage) button_2.getScene().getWindow();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/AdminView.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            ((Stage) stage).setTitle("Admin View");
+            ((Stage) stage).setScene(new Scene(root, 642, 392));
+            ((Stage) stage).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-
     public void handler(ActionEvent event){
         if(event.getSource() == button_2){
             String name = textField_1.getText();
@@ -64,16 +64,11 @@ public class AddTeacherViewController extends Application implements Initializab
                 alert.setHeaderText(null);
                 alert.setContentText("Teacher Added");
                 alert.showAndWait();
-                Stage stage = (Stage) button_3.getScene().getWindow();
-                stage.close();
+                go_back();
             }
         }
-        else if(event.getSource()==button_3){
-
-            Stage stage = (Stage) button_3.getScene().getWindow();
-            stage.close();
-//            stage_1.getScene().getWindow();
-//            stage_1.close();
+        else if(event.getSource() == button_3) {
+            go_back();
         }
     }
 

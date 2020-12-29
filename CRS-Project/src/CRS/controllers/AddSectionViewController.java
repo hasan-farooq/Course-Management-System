@@ -1,58 +1,54 @@
 
 package CRS.controllers;
 
-import CRS.classes.Admin;
-import CRS.classes.Course;
 import CRS.classes.Section;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddSectionViewController extends Application implements Initializable {
+public class AddSectionViewController implements Initializable {
 
-    @FXML Stage stage_1;
     @FXML Button button_1;
     @FXML Button button_2;
     @FXML Button button_3;
-    @FXML Scene scene_1;
     @FXML TextField textField_1;
     @FXML TextField textField_2;
-    @FXML ComboBox comboBox_1;
-    @FXML ComboBox comboBox_2;
+    @FXML ComboBox<String> comboBox_1;
+    @FXML ComboBox<String> comboBox_2;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        stage_1 = new Stage();
-        stage_1 = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/CRS/views/AddSectionView.fxml"));
-        stage_1.setTitle("Admin View");
-        scene_1 = new Scene(root, 642, 392);
-        stage_1.setScene(scene_1);
-        stage_1.show();
+    public void go_back(){
+        Stage stage = (Stage) button_2.getScene().getWindow();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/AdminView.fxml"));
+            Parent root = fxmlLoader.load();
+            ((Stage) stage).setTitle("Admin View");
+            ((Stage) stage).setScene(new Scene(root, 642, 392));
+            ((Stage) stage).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    public void handler(ActionEvent event){
+
+    public void handler(ActionEvent event) throws SQLException {
         if(event.getSource() == button_2){
             String name = textField_1.getText();
             int seats = 0;
@@ -61,30 +57,26 @@ public class AddSectionViewController extends Application implements Initializab
             String teacher = (String) comboBox_2.getValue();
             seats = Integer.parseInt(capacity);
             Section section = new Section(name, course, teacher, seats);
-            Admin new_admin = new Admin();
             if (section.save_in_db()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Confirmation Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Section Added");
                 alert.showAndWait();
-                Stage stage = (Stage) button_3.getScene().getWindow();
-                stage.close();
+                go_back();
             }
         }
-        else if(event.getSource()==button_3){
-
-            Stage stage = (Stage) button_3.getScene().getWindow();
-            stage.close();
-//            stage_1.getScene().getWindow();
-//            stage_1.close();
+        else if(event.getSource() == button_3) {
+            go_back();
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] teachers;
-        String[] courses;
+//        String[] teachers;
+        ObservableList<String> teachers = FXCollections.observableArrayList();
+//        String[] courses;
+        ObservableList<String> courses = FXCollections.observableArrayList();
         String query_1 = "select * from teacher";
         String query_2 = "select * from course";
         Conn con = new Conn();
@@ -93,27 +85,27 @@ public class AddSectionViewController extends Application implements Initializab
             ResultSetMetaData rsmetadata = result.getMetaData();
             int cols = rsmetadata.getColumnCount();
 
-            teachers = new String[cols];
+//            teachers = new String[cols];
             int j = 0;
             while (result.next()) {
-                teachers[j] = result.getString("name");
-                j++;
+                teachers.add(result.getString("name"));
+//                teachers[j] = result.getString("name");
+//                j++;
             }
 
-            courses = new String[cols];
+//            courses = new String[cols];
             result = con.s.executeQuery(query_2);
             rsmetadata = result.getMetaData();
             cols = rsmetadata.getColumnCount();
             j = 0;
             while (result.next()) {
-                courses[j] = result.getString("name");
-                j++;
+//                courses[j] = result.getString("name");
+                courses.add(result.getString("name"));
+//                System.out.println(courses.get(j));
+//                j++;
             }
-//        comboBox_1.setStyle("-fx-text-inner-color: white");
-        ObservableList<String> list = FXCollections.observableArrayList(courses);
-        comboBox_1.setItems(list);
-        list = FXCollections.observableArrayList(teachers);
-        comboBox_2.setItems(list);
+            comboBox_1.setItems(courses);
+            comboBox_2.setItems(teachers);
         }catch(Exception e){}
 
     }

@@ -27,6 +27,21 @@ public class LoginController implements Initializable {
     @FXML PasswordField passwordField_1;
     @FXML ComboBox<String> comboBox_1;
 
+    public void go_back(){
+        Scene scene = button_1.getScene();
+        Stage stage = (Stage) button_1.getScene().getWindow();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/Login.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            ((Stage) stage).setTitle("Sign In");
+            ((Stage) stage).setScene(new Scene(root, 300, 275));
+            ((Stage) stage).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void login_button(ActionEvent event){
         String user = comboBox_1.getValue();
         String username = textField_1.getText();
@@ -52,8 +67,12 @@ public class LoginController implements Initializable {
                         e.printStackTrace();
                     }
                     stage_1.setTitle("Admin View");
+                    Stage stage = (Stage) button_1.getScene().getWindow();
+                    stage.close();
+
                     stage_1.setScene(new Scene(root, 642, 392));
                     stage_1.show();
+
                 } catch (IOException ex) {
                     System.out.println("Couldn't Write.");
                 }
@@ -63,25 +82,55 @@ public class LoginController implements Initializable {
                     FileWriter writer = new FileWriter("teacher_login.txt");
                     writer.write(username);
                     writer.close();
+                    Stage stage_1 = new Stage();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/CRS/views/TeacherView.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    stage_1.setTitle("Teacher View");
+                    stage_1.setScene(new Scene(root, 642, 392));
+                    Stage stage = (Stage) button_1.getScene().getWindow();
+                    stage.close();
+                    stage_1.show();
                 } catch (IOException ex) {
                     System.out.println("Couldn't Write.");
                 }
             }
-            else if (user == "Student" && result.next()){
+            else if (user == "Student" && result.next() ){
                 try {
                     FileWriter writer = new FileWriter("student_login.txt");
                     writer.write(username);
                     writer.close();
+                    Stage stage_1 = new Stage();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/CRS/views/StudentView.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    stage_1.setTitle("Student View");
+                    stage_1.setScene(new Scene(root, 642, 392));
+                    Stage stage = (Stage) button_1.getScene().getWindow();
+                    stage.close();
+                    stage_1.show();
                 } catch (IOException ex) {
                     System.out.println("Couldn't Write.");
                 }
             }
             else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Invalid Credentials");
+                alert.showAndWait();
+                go_back();
             }
         }
         catch(Exception e){System.out.println("Error");}
-        Stage stage = (Stage) button_1.getScene().getWindow();
-        stage.close();
+//        Stage stage = (Stage) button_1.getScene().getWindow();
+//        stage.close();
     }
 
     @Override

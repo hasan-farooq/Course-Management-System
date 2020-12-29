@@ -23,7 +23,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class RegisterCourseViewController extends Application implements Initializable {
+public class RegisterCourseViewController implements Initializable {
 
     public class checkbox{
         private CheckBox add;
@@ -51,14 +51,14 @@ public class RegisterCourseViewController extends Application implements Initial
     ObservableList<checkbox> objects_2 = FXCollections.observableArrayList();
     int rows = 0;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/CRS/views/RegisterCourseView.fxml"));
-        primaryStage.setTitle("Student View");
-        Scene scene_1 = new Scene(root, 642, 392);
-        primaryStage.setScene(scene_1);
-        primaryStage.show();
-    }
+//    @Override
+//    public void start(Stage primaryStage) throws Exception {
+//        Parent root = FXMLLoader.load(getClass().getResource("/CRS/views/RegisterCourseView.fxml"));
+//        primaryStage.setTitle("Student View");
+//        Scene scene_1 = new Scene(root, 642, 392);
+//        primaryStage.setScene(scene_1);
+//        primaryStage.show();
+//    }
 
 
     @Override
@@ -88,42 +88,54 @@ public class RegisterCourseViewController extends Application implements Initial
         table.setItems(objects);
         table_2.setItems(objects_2);
         System.out.println("Rows : " + rows);
-//        System.out.println(objects_2.get(rows-1).add.isSelected());
     }
-
-    public void handler(ActionEvent event){
+    public void go_back(){
+        Scene scene = button_2.getScene();
+        Stage stage = (Stage) button_2.getScene().getWindow();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/StudentView.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            ((Stage) stage).setTitle("Student View");
+            ((Stage) stage).setScene(new Scene(root, 642, 392));
+            ((Stage) stage).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void handler(ActionEvent event) throws FileNotFoundException {
         if(event.getSource() == button_2) {
             Registration registration;
-            File file = new File("student_login.txt");
-            Scanner reader = null;
-            try {
-                reader = new Scanner(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            String username = reader.nextLine();
-            reader.close();
-            for(int i = 0; i < rows; i++){
-                if(objects_2.get(i).add.isSelected()){
-                    registration = new Registration(username, objects.get(i).getName(),
-                            objects.get(i).getCourse());
-                    registration.insert_in_db();
+            if(Registration.is_open()) {
+                File file = new File("student_login.txt");
+                Scanner reader = null;
+                try {
+                    reader = new Scanner(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-                else if(objects_2.get(i).drop.isSelected()){
-                    registration = new Registration(username, objects.get(i).getName(),
-                            objects.get(i).getCourse());
-                    registration.delete_in_db();
+                String username = reader.nextLine();
+                reader.close();
+                for (int i = 0; i < rows; i++) {
+                    if (objects_2.get(i).add.isSelected()) {
+                        registration = new Registration(username, objects.get(i).getName(),
+                                objects.get(i).getCourse());
+                        registration.insert_in_db();
+                    } else if (objects_2.get(i).drop.isSelected()) {
+                        registration = new Registration(username, objects.get(i).getName(),
+                                objects.get(i).getCourse());
+                        registration.delete_in_db();
+                    }
                 }
+                AlertBox.alert("Registered");
             }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Registered");
-            alert.showAndWait();
-            Stage stage = (Stage) button_3.getScene().getWindow();
-            stage.close();
+            else{
+                AlertBox.alert("Registration is Closed");
+            }
+            go_back();
         }
+
         else if(event.getSource() == button_3) {
+            go_back();
         }
     }
 }
