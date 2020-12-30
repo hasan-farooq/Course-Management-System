@@ -1,6 +1,7 @@
 
 package CRS.controllers;
 
+import CRS.classes.Registration;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +39,33 @@ public class StudentController implements Initializable {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/RegisterCourseView.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
-                ((Stage) stage).setTitle("Admin View");
+                ((Stage) stage).setTitle("Student View");
+                ((Stage) stage).setScene(new Scene(root, 642, 392));
+                ((Stage) stage).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(event.getSource() == button_2) {
+            Scene scene = button_1.getScene();
+            Stage stage = (Stage) button_1.getScene().getWindow();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/AttendanceView.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                ((Stage) stage).setTitle("Student View");
+                ((Stage) stage).setScene(new Scene(root, 642, 392));
+                ((Stage) stage).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(event.getSource() == button_3) {
+            Scene scene = button_1.getScene();
+            Stage stage = (Stage) button_1.getScene().getWindow();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CRS/views/TranscriptView.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                ((Stage) stage).setTitle("Student View");
                 ((Stage) stage).setScene(new Scene(root, 642, 392));
                 ((Stage) stage).show();
             } catch (IOException e) {
