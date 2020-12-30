@@ -1,6 +1,5 @@
 package CRS.classes;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Teacher {
@@ -81,7 +80,5 @@ public class Teacher {
             System.out.println("Error Occurred while Adding Teacher");
             return false;
         }
-
     }
-
 }

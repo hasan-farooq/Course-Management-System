@@ -2,7 +2,6 @@
 
 package CRS.classes;
 
-//import com.mysql.cj.xdevapi.Statement;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -16,7 +15,6 @@ public class Conn {
 
     public Conn(){
         try{
-//            JOptionPane.showMessageDialog(null, "Invalid-conn");
             Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql:///ms","proj","");
 

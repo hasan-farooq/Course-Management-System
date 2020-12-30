@@ -1,8 +1,6 @@
 
 package CRS.classes;
 
-import javafx.scene.control.Alert;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -19,6 +17,15 @@ public class Registration {
         this.grade = "I";
         this.marks = 0;
         this.attendance = 0;
+    }
+    public Registration(String std,String sec,String course,String grade,
+                        String marks, String attendance){
+        this.student = std;
+        this.section = sec;
+        this.course = course;
+        this.grade = grade;
+        this.marks = Integer.parseInt(marks);
+        this.attendance = Integer.parseInt(attendance);
     }
     public Registration(Registration reg){
         this.student = reg.student;

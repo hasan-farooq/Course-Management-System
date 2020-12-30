@@ -10,8 +10,12 @@ public class Evaluation {
         this.weightage = weightage;
         this.type = type;
     }
-    public void add_marks(int marks){ this.marks = marks;}
-    public void add_weightage(int weightage){this.weightage = weightage;}
+    public void add_marks(int marks){
+        this.marks = marks;
+    }
+    public void add_weightage(int weightage){
+        this.weightage = weightage;
+    }
     public boolean save_in_db(String course, String section){
         Conn con = new Conn();
 //        System.out.println(course+section+type+marks+weightage);

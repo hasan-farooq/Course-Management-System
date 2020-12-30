@@ -1,14 +1,14 @@
 
 package CRS.classes;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Student {
     private ArrayList<Registration> registrations;
     private String name, id, gender, program, phone;
+
     public Student(String name, String id, String gen, String prg, String ph){
         this.name = name;
         this.id = id;
@@ -16,6 +16,9 @@ public class Student {
         this.program = prg;
         this.phone = ph;
         this.registrations = new ArrayList<Registration>();
+    }
+    public Student(String username){
+        this.name = username;
     }
     public void register_course(String course, String section) throws FileNotFoundException {
         this.registrations.add(new Registration(this.name, section, course));
@@ -53,6 +56,38 @@ public class Student {
             System.out.println("Error Occurred while Adding Student");
             return false;
         }
+    }
+    public ArrayList<Registration> see_transcript(){
+        ArrayList<Registration> regs = new ArrayList<Registration>();
+        Conn con = new Conn();
+        String query = "select * from registration where student like '"+name+"'";
+        try {
+            ResultSet result = con.s.executeQuery(query);
+            while(result.next()){
+                regs.add(new Registration(name, result.getString("section"),
+                        result.getString("course"), result.getString("grade"),
+                        result.getString("marks"), result.getString("attendance")));
+            }
+        } catch (Exception e) {
+            System.out.println("Couldn't load Transcript");
+        }
+        return regs;
+    }
+    public ArrayList<Registration> see_attendance(){
+        ArrayList<Registration> regs = new ArrayList<Registration>();
+        Conn con = new Conn();
+        String query = "select * from registration where student like '"+name+"'";
+        try {
+            ResultSet result = con.s.executeQuery(query);
+            while(result.next()){
+                regs.add(new Registration(name, result.getString("section"),
+                        result.getString("course"), result.getString("grade"),
+                        result.getString("marks"), result.getString("attendance")));
+            }
+        } catch (Exception e) {
+            System.out.println("Couldn't load Transcript");
+        }
+        return regs;
     }
 
 }
