@@ -1,7 +1,5 @@
 # Course-Management-System
 
-Hello there !
-
 This is a Java based implementation of Course Management System supporting Admin , Teacher and Student roles.
 I have tried to use some OOP Design principles. The GUI used is JavaFx and Database used is MySQL.
 
